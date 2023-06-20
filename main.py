@@ -19,10 +19,10 @@ demand = pd.DataFrame({'Month': range(1, period+1), 'Demand': Month[:period]})
 forecast_demand = demand['Demand'].sum() / period
 
 # 计算安全库存和再订货点
-Lead_Time_Demand = forecast_demand * (LeadTime/30)
+Lead_Time_Demand = forecast_demand * (LeadTime/30) #LT时间换算成月
 Standard_Deviation = demand['Demand'].std()
 Service_Factor = norm.ppf(ServiceLevel)
-Lead_Time_Factor = np.sqrt(LeadTime/30)
+Lead_Time_Factor = np.sqrt(LeadTime/30) #LT时间换算成月
 Safety_Stock = Standard_Deviation * Service_Factor * Lead_Time_Factor
 Reorder_Point = Safety_Stock + Lead_Time_Demand
 
